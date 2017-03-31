@@ -1,0 +1,23 @@
+<h1>Projects</h1>
+<div class="projects-grid">
+  <md-card class="project-card" *ngFor="let project of projects | async" routerLink="/projects/{{project.$key}}">  
+    <md-card-content>
+      <h2>{{project.name}}</h2>
+      <p>
+        10000 strings
+      </p>
+      <!--<p *ngIf="project.languages != null">  
+        <a md-button color="primary" *ngFor="let language of project.languages" routerLink="/translations/{{project.$key}}/{{language.code}}">{{language.name}}</a>        
+      </p>-->
+    </md-card-content>
+    <md-card-actions>
+      <button md-button (click)="onEdit(project)">EDIT</button>
+      <button md-button (click)="onDelete(project)">DELETE</button>
+    </md-card-actions>
+  </md-card>
+  <md-card class="new-project-card">
+    <md-card-content>
+        <a md-raised-button color="primary" routerLink="/new-project">Add new project</a>
+    </md-card-content>
+  </md-card>  
+</div>

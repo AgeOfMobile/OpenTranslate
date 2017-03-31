@@ -1,0 +1,20 @@
+<p>
+  <a *ngIf="!editing" md-raised-button color="primary" (click)="showAddForm()">Add new language</a>
+</p>
+<form *ngIf="editing">
+  <h2>Add new language</h2>
+  <p>  
+    <md-select placeholder="Language" name="newLanguage" [(ngModel)]="newLanguage">
+      <md-option *ngFor="let language of allLanguages" [value]="language">{{ language.name }}</md-option>
+    </md-select>
+    <button md-raised-button color="primary" (click)="add()">Add</button>
+  </p>
+</form>
+<table *ngIf="languages != null">
+  <tr *ngFor="let language of languages">
+    <td><a md-raised-button color="accent" routerLink="/translations/{{project.$key}}/{{language.code}}">{{ language.name }}</a></td>
+    <td>100%</td>
+    <td><button md-icon-button (click)="delete(language.code)"><md-icon>delete</md-icon></button></td>
+  </tr>  
+</table>
+

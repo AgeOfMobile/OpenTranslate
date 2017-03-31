@@ -1,0 +1,16 @@
+<md-sidenav-container fullscreen>
+    <div class="content">
+      <md-toolbar color="primary">
+          <a *ngFor="let item of items" 
+            md-button
+            [routerLink]="[item.path]">
+            {{item.title}}            
+          </a>
+        <span class="example-fill-remaining-space"></span>
+        <button md-button>Welcome, Guest</button>
+      </md-toolbar>      
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</md-sidenav-container>

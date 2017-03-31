@@ -1,0 +1,15 @@
+<h1>Edit Project</h1>
+<form class="example-form">
+  <p>
+    <md-input-container>
+      <input mdInput placeholder="Name" size="40" name="name" [(ngModel)]="project.name" />
+    </md-input-container>
+  </p>
+  <p>
+    <md-input-container>
+      <textarea mdInput placeholder="Description" cols="40" rows="5" [(ngModel)]="project.description" name="description"></textarea>
+    </md-input-container>
+  </p>
+  <button md-raised-button color="primary" (click)="save()">Save</button>
+  <a md-button routerLink="/projects">Cancel</a>
+</form>

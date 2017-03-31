@@ -1,0 +1,19 @@
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.project-card,
+.new-project-card {
+  width: 280px;
+  min-height: 150px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.new-project-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

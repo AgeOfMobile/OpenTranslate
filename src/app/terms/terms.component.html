@@ -1,0 +1,21 @@
+<p>
+  <a md-raised-button color="primary" (click)="addTerm()">Add new term</a>
+</p>
+<form class="example-form" *ngIf="editing">
+  <p>
+    <md-input-container>
+      <input mdInput placeholder="Name" size="40" name="name" [(ngModel)]="newTerm.$key" />
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Context" size="40" [(ngModel)]="newTerm.context" name="context" />
+    </md-input-container>
+  </p>
+  <button md-raised-button color="primary" (click)="save()">Save</button>
+  <a md-button (click)="cancel()">Cancel</a>
+</form>
+<table *ngIf="terms != null">
+  <tr *ngFor="let term of terms | async">
+    <td><h4>{{term.$key}}</h4></td>
+    <td>{{term.context}}</td>
+  </tr>  
+</table>

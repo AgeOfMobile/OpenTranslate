@@ -1,0 +1,16 @@
+<h1>{{project.name}}</h1>
+<table *ngIf="translations != null" width="100%">
+  <tr *ngFor="let translation of translations | async">
+    <td>
+        <strong>{{translation.term.$key}}</strong>
+        <em>{{translation.term.context}}</em>
+    </td>
+    <td>
+        <!--{{ translation.value }}-->
+        <md-input-container>
+            <input mdInput placeholder="Value" size="40" name="{{translation.term.$key}}_value" [(ngModel)]="translation.value" />            
+        </md-input-container>
+        <button md-raised-button (click)="save(translation)">Save</button>
+    </td>
+  </tr>
+</table>

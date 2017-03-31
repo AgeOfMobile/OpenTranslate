@@ -1,0 +1,22 @@
+md-sidenav {
+  width: 200px;
+}
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 16px;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.welcome {
+  font-size: 0.8em;
+}
