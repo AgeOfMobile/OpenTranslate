@@ -43,4 +43,8 @@ export class TermsComponent implements OnInit {
   cancel() {
     this.editing = false;
   }
+
+  delete(term: string) {
+    this.projectService.removeTerm(this._project.$key, term);
+  }
 }

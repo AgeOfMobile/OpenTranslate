@@ -27,7 +27,7 @@
     <tr *ngFor="let term of terms | async">
       <td class="mdl-data-table__cell--non-numeric">{{term.$key}}</td>
       <td class="mdl-data-table__cell--non-numeric">{{term.context}}</td>
-      <td class="mdl-data-table__cell--non-numeric"></td>
+      <td class="mdl-data-table__cell--non-numeric"><button md-icon-button (click)="delete(term.$key)"><md-icon>delete</md-icon></button></td>
     </tr>
   </tbody>  
 </table>

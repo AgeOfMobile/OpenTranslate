@@ -65,6 +65,10 @@ export class ProjectService {
       .update({ context: term.context });
   }
 
+  removeTerm(projectKey: string, termKey: string) {
+    this.af.database.object(`/terms/${projectKey}/${termKey}`).remove();
+  }
+
   getTerms(projectKey: string): Observable<Term[]> {
     return this.af.database.list(`/terms/${projectKey}`);
   }

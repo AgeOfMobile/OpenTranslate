@@ -4,16 +4,16 @@
     <md-card-content>
       <h4>{{project.name}}</h4>
       <p>
-        10000 strings
+        <strong>10000</strong> strings
       </p>
       <!--<p *ngIf="project.languages != null">  
-        <a md-button color="primary" *ngFor="let language of project.languages" routerLink="/translations/{{project.$key}}/{{language.code}}">{{language.name}}</a>        
+        <a md-raised-button color="accent" *ngFor="let language of getLanguages(project)" routerLink="/translations/{{project.$key}}/{{language.code}}">{{language.name}}</a>
       </p>-->
     </md-card-content>
-    <md-card-actions>
-      <button md-button (click)="onEdit(project)">EDIT</button>
-      <button md-button (click)="onDelete(project)">DELETE</button>
-    </md-card-actions>
+    <!--<md-card-actions>
+      <button md-button (click)="onEdit(project)">EDIT</button>-->
+      <!--<button md-button (click)="onDelete(project)">DELETE</button>
+    </md-card-actions>-->
   </md-card>
   <md-card class="new-project-card">
     <md-card-content>

@@ -1,4 +1,4 @@
-<h3>{{project.name}}</h3>
+<h3>{{project.name}} <a md-icon-button routerLink="/edit-project/{{project.$key}}"><md-icon>edit</md-icon></a></h3>
 <md-tab-group>
   <md-tab label="Languages">
       <app-languages [project]="project"></app-languages>
