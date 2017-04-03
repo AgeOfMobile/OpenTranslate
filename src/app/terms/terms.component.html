@@ -1,21 +1,33 @@
+<p></p>
 <p>
-  <a md-raised-button color="primary" (click)="addTerm()">Add new term</a>
+  <a *ngIf="!editing" md-raised-button color="primary" (click)="addTerm()">Add new term</a>
 </p>
 <form class="example-form" *ngIf="editing">
-  <p>
+  <h4>Add new term</h4>
+  <p>    
     <md-input-container>
       <input mdInput placeholder="Name" size="40" name="name" [(ngModel)]="newTerm.$key" />
     </md-input-container>
     <md-input-container>
       <input mdInput placeholder="Context" size="40" [(ngModel)]="newTerm.context" name="context" />
-    </md-input-container>
+    </md-input-container>  
+    <button md-raised-button color="primary" (click)="save()">Save</button>
+    <a md-button (click)="cancel()">Cancel</a>
   </p>
-  <button md-raised-button color="primary" (click)="save()">Save</button>
-  <a md-button (click)="cancel()">Cancel</a>
 </form>
-<table *ngIf="terms != null">
-  <tr *ngFor="let term of terms | async">
-    <td><h4>{{term.$key}}</h4></td>
-    <td>{{term.context}}</td>
-  </tr>  
+<table *ngIf="terms != null" class="mdl-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Term</th>
+        <th class="mdl-data-table__cell--non-numeric">Context</th>
+        <th class="mdl-data-table__cell--non-numeric">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let term of terms | async">
+      <td class="mdl-data-table__cell--non-numeric">{{term.$key}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{term.context}}</td>
+      <td class="mdl-data-table__cell--non-numeric"></td>
+    </tr>
+  </tbody>  
 </table>

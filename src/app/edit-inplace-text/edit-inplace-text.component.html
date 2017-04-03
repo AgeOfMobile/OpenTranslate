@@ -1,0 +1,8 @@
+<span *ngIf="!editing">{{ text }} <button md-icon-button (click)="edit()"><md-icon>edit</md-icon></button></span>
+<form *ngIf="editing">
+  <md-input-container>
+    <input mdInput placeholder="Text" size="40" name="editing_text" [(ngModel)]="text" />            
+  </md-input-container>
+  <button md-raised-button (click)="doSave()" color="primary">Save</button>
+  <a md-button (click)="cancel()">Cancel</a>
+</form>

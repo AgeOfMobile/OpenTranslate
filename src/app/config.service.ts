@@ -13,11 +13,19 @@ const LANGUAGES = [
 
 @Injectable()
 export class ConfigService {
-  constructor() { 
+  private languagesMap = {};
 
+  constructor() { 
+    for (let language of LANGUAGES) {
+      this.languagesMap[language.code] = language;
+    }
   }
 
   getAvailableLanguages(): Language[] {
     return LANGUAGES;
+  }
+
+  getLanguage(code: string): Language {
+    return this.languagesMap[code];
   }
 }

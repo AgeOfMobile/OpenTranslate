@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { Routes, RouterModule }   from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
+import 'hammerjs';
 
 import { ProjectService } from './project.service';
 import { ConfigService } from './config.service';
@@ -18,6 +19,7 @@ import { EditTranslationsComponent } from './edit-translations/edit-translations
 import { TermsComponent } from './terms/terms.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { LanguagesComponent } from './languages/languages.component';
+import { EditInplaceTextComponent } from './edit-inplace-text/edit-inplace-text.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -48,7 +50,8 @@ const routes: Routes = [
     EditTranslationsComponent,
     TermsComponent,
     ProjectDetailComponent,
-    LanguagesComponent
+    LanguagesComponent,
+    EditInplaceTextComponent
   ],
   imports: [
     BrowserModule,

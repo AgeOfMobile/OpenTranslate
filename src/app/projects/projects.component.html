@@ -1,8 +1,8 @@
-<h1>Projects</h1>
+<h3>Projects</h3>
 <div class="projects-grid">
   <md-card class="project-card" *ngFor="let project of projects | async" routerLink="/projects/{{project.$key}}">  
     <md-card-content>
-      <h2>{{project.name}}</h2>
+      <h4>{{project.name}}</h4>
       <p>
         10000 strings
       </p>
@@ -19,5 +19,5 @@
     <md-card-content>
         <a md-raised-button color="primary" routerLink="/new-project">Add new project</a>
     </md-card-content>
-  </md-card>  
+  </md-card>
 </div>

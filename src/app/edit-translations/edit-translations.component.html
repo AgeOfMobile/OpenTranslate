@@ -1,16 +1,22 @@
-<h1>{{project.name}}</h1>
-<table *ngIf="translations != null" width="100%">
-  <tr *ngFor="let translation of translations | async">
-    <td>
-        <strong>{{translation.term.$key}}</strong>
-        <em>{{translation.term.context}}</em>
-    </td>
-    <td>
-        <!--{{ translation.value }}-->
-        <md-input-container>
-            <input mdInput placeholder="Value" size="40" name="{{translation.term.$key}}_value" [(ngModel)]="translation.value" />            
-        </md-input-container>
-        <button md-raised-button (click)="save(translation)">Save</button>
+<h3><a routerLink="/projects/{{project.$key}}">{{project.name}}</a> &raquo; {{ languageName }}</h3>
+<table *ngIf="translations != null" class="mdl-data-table mdl-shadow--2dp">
+  <colgroup>
+    <col style="width: 15%" />
+    <col style="width: 20%" />
+    <col style="width: 65%" />
+  </colgroup>
+  <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Term</th>
+        <th class="mdl-data-table__cell--non-numeric">Context</th>
+        <th class="mdl-data-table__cell--non-numeric">Translation</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let translation of translations | async">    
+    <td class="mdl-data-table__cell--non-numeric">{{translation.term.$key}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{translation.term.context}}</td>
+    <td class="mdl-data-table__cell--non-numeric">
+        <edit-inplace-text [text]="translation.value" (save)="save($event, translation)"></edit-inplace-text>
     </td>
   </tr>
 </table>

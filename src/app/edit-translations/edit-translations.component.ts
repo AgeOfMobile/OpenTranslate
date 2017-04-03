@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Observable } from 'rxjs';
+
+import { ConfigService } from '../config.service';
 import { Term, Translation, Project, ProjectService } from '../project.service';
 
 @Component({
@@ -11,11 +13,13 @@ import { Term, Translation, Project, ProjectService } from '../project.service';
 export class EditTranslationsComponent implements OnInit {
   project = new Project();
   language = '';
+  languageName = '';
   translations: Observable<Translation[]>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private configService: ConfigService,
     private projectService: ProjectService) { }
 
   ngOnInit() {
@@ -30,17 +34,13 @@ export class EditTranslationsComponent implements OnInit {
 
         this.translations = Observable.combineLatest(terms, translations,
           (terms, translations) => {
-            console.log(translations);
-
             var result = [];
             var map = {};
             for (let trans of translations) {
               map[trans.$key] = trans;
             }
-            console.log(map);
             for (let term of terms) {
               let trans = map[term.$key];
-              console.log(`Translation for key ${term.$key}: `, trans);
               if (trans == undefined) {
                 trans = new Translation();
               }
@@ -50,9 +50,12 @@ export class EditTranslationsComponent implements OnInit {
             return result;
           });
       });    
+
+      this.languageName = this.configService.getLanguage(this.language).name;
   }
 
-  save(translation: Translation) {
+  save(text: string, translation: Translation) {
+    translation.value = text;
     this.projectService.saveTranslation(this.project.$key, this.language, translation.term.$key, translation.value);
   }
 }
