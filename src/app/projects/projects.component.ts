@@ -12,6 +12,10 @@ import { Language, ConfigService } from '../config.service';
 export class ProjectsComponent implements OnInit {
   projects: Observable<Project[]>;
 
+  projectProgressChartLabels:string[] = ['Translated strings', 'Not-translated strings'];
+  projectProgressChartData:number[] = [90, 10];
+  chartOptions = { legend: { display: false }};
+
   constructor(
     private router: Router, 
     private configService: ConfigService,

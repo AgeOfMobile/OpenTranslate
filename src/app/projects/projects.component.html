@@ -5,15 +5,24 @@
       <h4>{{project.name}}</h4>
       <p>
         <strong>10000</strong> strings
+      </p>      
+      <!--<span>Languages</span>
+      <p *ngIf="project.languages != null">
+        <a md-button color="accent" *ngFor="let language of getLanguages(project)" routerLink="/translations/{{project.$key}}/{{language.code}}">{{language.name}}</a>
       </p>
-      <!--<p *ngIf="project.languages != null">  
-        <a md-raised-button color="accent" *ngFor="let language of getLanguages(project)" routerLink="/translations/{{project.$key}}/{{language.code}}">{{language.name}}</a>
+      <p *ngIf="project.languages == null">
+        No
       </p>-->
+      <div style="display: block">
+        <canvas baseChart
+            [data]="projectProgressChartData"
+            [labels]="projectProgressChartLabels"
+            [options]="chartOptions"
+            chartType="doughnut"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+      </div>
     </md-card-content>
-    <!--<md-card-actions>
-      <button md-button (click)="onEdit(project)">EDIT</button>-->
-      <!--<button md-button (click)="onDelete(project)">DELETE</button>
-    </md-card-actions>-->
   </md-card>
   <md-card class="new-project-card">
     <md-card-content>

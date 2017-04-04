@@ -7,7 +7,8 @@
             {{item.title}}            
           </a>
         <span class="example-fill-remaining-space"></span>
-        <button md-button>Welcome, Guest</button>
+        <button md-button *ngIf="authenticated"><md-icon>person</md-icon> {{ user.displayName }}</button>
+        <button md-button *ngIf="authenticated" (click)="logout()">Logout</button>
       </md-toolbar>      
       <div class="container">
         <router-outlet></router-outlet>

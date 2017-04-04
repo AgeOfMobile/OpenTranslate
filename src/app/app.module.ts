@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { Routes, RouterModule }   from '@angular/router';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import 'hammerjs';
+import { ChartsModule } from 'ng2-charts';
 
 import { ProjectService } from './project.service';
 import { ConfigService } from './config.service';
@@ -29,6 +30,11 @@ export const firebaseConfig = {
   projectId: "opentranslate-ec472",
   storageBucket: "opentranslate-ec472.appspot.com",
   messagingSenderId: "230494882559"
+};
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
 };
 
 const routes: Routes = [
@@ -60,7 +66,8 @@ const routes: Routes = [
     HttpModule,
     MaterialModule,
     RouterModule.forRoot(routes),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    ChartsModule
   ],
   providers: [ProjectService, ConfigService],
   bootstrap: [AppComponent]
